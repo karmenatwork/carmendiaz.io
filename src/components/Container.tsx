@@ -5,10 +5,14 @@ export const ContainerOuter = forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(function OuterContainer({ className, children, ...props }, ref) {
+  // let outerClassName = clsx(
+  //   "border-dashed border-2 border-indigo-600",
+  //   className
+  // );
   return (
     <div
       ref={ref}
-      className={clsx("sm:px-8 border-dashed border-2 border-indigo-600 ", className)}
+      className={clsx("sm:px-8", className)}
       {...props}
     >
       <div className="mx-auto w-full max-w-7xl lg:px-8">{children}</div>
@@ -20,11 +24,15 @@ export const ContainerInner = forwardRef<
   React.ElementRef<"div">,
   React.ComponentPropsWithoutRef<"div">
 >(function InnerContainer({ className, children, ...props }, ref) {
+  // let innerClassName = clsx(
+  //   "border-solid border-2 border-pink-600",
+  //   className
+  // );
   return (
     <div
       ref={ref}
       className={clsx(
-        "relative px-4 sm:px-8 lg:px-12 border-solid border-2 border-pink-600",
+        "relative px-4 sm:px-8 lg:px-12",
         className
       )}
       {...props}
