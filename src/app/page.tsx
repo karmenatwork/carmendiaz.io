@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header";
 import { Container } from "@/components/Container";
+import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
           Hola! I’m Carmen 👋
         </h1>
       </div>
+      <Footer />
     </Container>
   );
 }
