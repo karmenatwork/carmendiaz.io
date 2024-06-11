@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Layout } from "@/components/Layout";
+
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -18,7 +20,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className="flex h-full bg-zinc-50 dark:bg-black">
         <div className="flex w-full">
-          {children}
+          <Layout>{children}</Layout>
         </div>
       </body>
     </html>
