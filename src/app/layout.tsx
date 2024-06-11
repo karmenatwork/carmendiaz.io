@@ -17,8 +17,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
-      <body className="flex h-full bg-zinc-50 dark:bg-black">
+    <html lang="en" className="h-full" suppressHydrationWarning={true}>
+      <body
+        className="flex h-full bg-zinc-50 dark:bg-black"
+        suppressHydrationWarning={true}
+      >
         <div className="flex w-full">
           <Layout>{children}</Layout>
         </div>
