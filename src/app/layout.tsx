@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Providers from "@/app/providers";
 import { Layout } from "@/components/Layout";
 
 import { Inter } from "next/font/google";
@@ -22,9 +23,11 @@ export default function RootLayout({
         className="flex h-full bg-zinc-50 dark:bg-black"
         suppressHydrationWarning={true}
       >
-        <div className="flex w-full">
-          <Layout>{children}</Layout>
-        </div>
+        <Providers>
+          <div className="flex w-full">
+            <Layout>{children}</Layout>
+          </div>
+        </Providers>
       </body>
     </html>
   );
