@@ -240,6 +240,7 @@ function DesktopNavigation({ className, ...props }: React.ComponentPropsWithoutR
     >
       <ul className="flex text-zinc-600 dark:text-zinc-200">
         <NavItem href="/about">About</NavItem>
+        <NavItem href="/gists">Gists</NavItem>
         <NavItem href="/contact">Contact</NavItem>
       </ul>
     </nav>
@@ -308,6 +309,7 @@ function MobileNavigation(
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
+                <NavItem href="/gists">Gists</NavItem>
                 <MobileNavItem href="/contact">Contact</MobileNavItem>
               </ul>
             </nav>
