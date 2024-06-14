@@ -59,7 +59,7 @@ export function GistLayout({
                 <span className="ml-3">{formatDate(gist.date)}</span>
               </time>
             </header>
-            <div className="prose mt-8">{children}</div>
+            <ProseWrapper className="prose mt-8">{children}</ProseWrapper>
           </article>
         </div>
       </div>
