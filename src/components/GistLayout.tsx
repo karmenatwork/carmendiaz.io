@@ -7,7 +7,8 @@ import { AppContext } from '@/app/providers'
 import { Container } from '@/components/Container'
 import { type GistWithSlug } from '@/lib/gists'
 import { formatDate } from '@/lib/formatDate'
-import ProseWrapper  from '@/components/ProseWrapper'
+// import ProseWrapper  from '@/components/ProseWrapper'
+import { Prose }  from '@/components/Prose'
 
 function ArrowLeftIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -59,7 +60,7 @@ export function GistLayout({
                 <span className="ml-3">{formatDate(gist.date)}</span>
               </time>
             </header>
-            <ProseWrapper className="prose mt-8">{children}</ProseWrapper>
+            <Prose className="prose mt-8">{children}</Prose>
           </article>
         </div>
       </div>
