@@ -5,7 +5,7 @@ export const gist = {
   date: '2023-12-20',
   title: 'M3 MacBook setup - Before you start',
   description:
-    'My old Macbook pro laptop\'s sound died right as I began my ML/AI bootcamp, reparing it would take a couple of weeks, so I took a leap and invested in an M3 MacBook. It\'s a game-changer, but setting it up for development is quiet an adventure. Here are',
+    'Just as I started my ML/AI bootcamp, my old MacBook Pro\'s audio stopped working. Repairs would have taken weeks, so I decided to invest in an M3 MacBook. It\'s proving to be a game-changer, yet setting it up for development has been quite an adventure. I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future. Here are the first steps.'
 }
 
 export const metadata = {
@@ -16,7 +16,7 @@ export const metadata = {
 export default (props) => <GistLayout gist={gist} {...props} />
 
 My old Macbook pro laptop\'s sound died right as I began my ML/AI bootcamp, reparing it would take a couple of weeks, so I took a leap and invested in an M3 MacBook. It's a game-changer, but setting it up for development is quiet an adventure. 
-As I was setting it up, I took some notes (in case I need to re-do it :)
+I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future. 
 
 **Before you started**
 
@@ -87,8 +87,24 @@ Homebrew shows instructions at the end of the installation process. Follow them 
 ```
 
 4. **New shell:** Did you notice something? `Zsh` is the default shell program on newer Macs. Prior to macOS 10.15 Catalina, the Bash shell was the default in Mac Terminal.
-I use [ohmyz] (https://ohmyz.sh/#install), and open source, community-driven framework for managing Zsh configuration. To install run and follow its instructions.
+I use [ohmyzsh](https://ohmyz.sh/#install), and open source, community-driven framework for managing `ZSH` configuration. To install run and follow its instructions.
 
 ```
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+5. **System preferences:**
+I personally like to 👀 everything. By default these value are turned off. You can set these from the terminal:
+
+```
+# show hidden files
+defaults write com.apple.finder AppleShowAllFiles YES
+
+# show path bar
+defaults write com.apple.finder ShowPathbar -bool true
+
+# show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+killall Finder;
 ```
