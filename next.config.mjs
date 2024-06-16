@@ -1,5 +1,6 @@
 import nextMDX from "@next/mdx";
 import remarkGfm from 'remark-gfm'
+import rehypeExternalLinks from "rehype-external-links";
 
 /** @type {import('next').NextConfig} */
 
@@ -10,6 +11,15 @@ const withMDX = nextMDX({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [remarkGfm],
+    rehypePlugins: [
+      [
+        rehypeExternalLinks,
+        {
+          target: '_blank',
+          rel: ['noopener', 'noreferrer']
+        }
+      ]
+    ],
   }
 })
 
