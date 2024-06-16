@@ -1,0 +1,73 @@
+import { GistLayout } from '@/components/GistLayout'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2023-12-21',
+  title: 'M3 MacBook setup for software development',
+  description:
+    'Here are my basic development setup -- must have, on a M3Pro Macbook. '
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+My old Macbook pro laptop\'s sound died right as I began my ML/AI bootcamp, reparing it would take a couple of weeks, so I took a leap and invested in an M3 MacBook. It's a game-changer, but setting it up for development is quiet an adventure. 
+
+I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future 😅. Here are my must have steps.
+
+
+
+1. **Install Homebrew**
+
+Homebrew is a free and open-source package manager that simplifies the installation of software on macOS and Linux.
+
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Once you have Homebrew installed, you could start installing the basics dev tools such as:
+
+
+```shell
+brew install \\
+  git \\ - Version control
+  nvm \\ - Node version manager
+  pnpm \\ - Node package manager
+  gh \\ - Github CLI
+  wget \\ - cURL alternative
+
+```
+2. **iTerm2**
+
+Download, unzip and move it to Application, or 
+
+```
+$ brew install --cask iterm2
+````
+
+3. **Customize ZSH shell**
+
+ Since Catalina, the default shell in macOS has been `zsh` instead of the old default, `bash`. To customize `zsh`, I use the famous **Oh My ZSH!**
+
+``` 
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+````
+
+Open the file `.zshrc` and customize as you like. **Tip:** [ohmyzsh Cheatsheet](https://github.com/ohmyzsh/ohmyzsh/wiki/Cheatsheet)
+
+There are a couple of formulas worth to install from the go: 
+
+```
+brew install zsh-autosuggestions zsh-syntax-highlighting
+``` 
+
+Add active these formulas add the following in your `.zshrc` file.
+`
+source $HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+`
+
