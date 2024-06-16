@@ -4,8 +4,7 @@ export const gist = {
   author: 'Carmen',
   date: '2023-12-21',
   title: 'M3 MacBook setup for software development',
-  description:
-    'Here are my basic development setup -- must have, on a M3Pro Macbook. '
+  description:'The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. Here are the must-have steps I inherited from my Intel configuration.'
 }
 
 export const metadata = {
@@ -15,15 +14,11 @@ export const metadata = {
 
 export default (props) => <GistLayout gist={gist} {...props} />
 
-My old Macbook pro laptop\'s sound died right as I began my ML/AI bootcamp, reparing it would take a couple of weeks, so I took a leap and invested in an M3 MacBook. It's a game-changer, but setting it up for development is quiet an adventure. 
+The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. 
+Here are the must-have steps I inherited from my Intel configuration.
 
-I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future 😅. Here are my must have steps.
-
-
-
-1. **Install Homebrew**
-
-Homebrew is a free and open-source package manager that simplifies the installation of software on macOS and Linux.
+1. **Install Homebrew (a free and open-source package manager):**
+It simplifies the installation of software on macOS and Linux, and has good ARM support now.
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -41,9 +36,9 @@ brew install \\
   wget \\ - cURL alternative
 
 ```
-2. **iTerm2**
+2. **iTerm2:** It's one of the ARM-native options
 
-Download, unzip and move it to Application, or 
+Download it [here](https://iterm2.com/downloads.html), then unzip and move it to Application, or 
 
 ```
 $ brew install --cask iterm2

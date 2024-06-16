@@ -1,11 +1,12 @@
 import { GistLayout } from '@/components/GistLayout'
 
+import installXcode from './install-Xcode-CLT.png'
 export const gist = {
   author: 'Carmen',
   date: '2023-12-20',
   title: 'M3 MacBook setup - Before you start',
   description:
-    'Just as I started my ML/AI bootcamp, my old MacBook Pro\'s audio stopped working. Repairs would have taken weeks, so I decided to invest in an M3 MacBook. It\'s proving to be a game-changer, yet setting it up for development has been quite an adventure. I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future. Here are the first steps.'
+    'Just as I started my ML/AI bootcamp, my old MacBook Pro\'s audio stopped working. Repairs would have taken weeks, so I took a leap and invested in an M3 MacBook. It\'s a game-changer! and setting it up for development has been quite an adventure. I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future. Here are the first steps.'
 }
 
 export const metadata = {
@@ -15,17 +16,20 @@ export const metadata = {
 
 export default (props) => <GistLayout gist={gist} {...props} />
 
-My old Macbook pro laptop\'s sound died right as I began my ML/AI bootcamp, reparing it would take a couple of weeks, so I took a leap and invested in an M3 MacBook. It's a game-changer, but setting it up for development is quiet an adventure. 
-I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future. 
+Just as I started my ML/AI bootcamp, my old MacBook Pro\'s audio stopped working. Repairs would have taken weeks, so I took a leap and invested in an M3 MacBook. It\'s a game-changer! and setting it up for development is quiet an adventure. 
+I\'ve been taking notes during the setup process, just in case I need to repeat these steps in the future 😅. Here are the first steps. 
 
 **Before you started**
+
+The M3 chip uses ARM architecture, so you'll want to prioritize software and tools that have native ARM support for optimal performance
 
 1. **Get familiar with Mac Terminal or alternatives:** 
 The Terminal is a command-line interface (CLI) that allows you to interact with the OS and run commands. It gives us access to the Unix command line, or shell.
 If you are new to Mac: 
 `Tip: Click the Spotlight icon in the menu bar and type “terminal.” `
 
-Apple provides its own built-in Mac Terminal application, but most developers prefers alteranatives such as [iterm2](https://iterm2.com/#/section/home), [warp](https://www.warp.dev/), [hyper](https://hyper.is/). I have personally been using iterm2 for years. Download it [here](https://iterm2.com/downloads.html)
+Apple provides its own built-in Mac Terminal application, but most developers prefers alternatives terminal emulators. Consider using ARM-native options like [iTerm2](https://iterm2.com/#/section/home)or [Warp](https://www.warp.dev/) for better performance. 
+I have personally been using iterm2 for years. Download it [here](https://iterm2.com/downloads.html)
 
 2. Check on [MacOS_version_history](https://en.wikipedia.org/wiki/MacOS_version_history) for the latest version.
 
@@ -54,6 +58,9 @@ Options:
 $ xcode-select --install
 ```
 You will see a popup window that asks you to install Xcode Command Line Tools.
+
+<Image src={installXcode} alt="" />
+
 The full Xcode application will be installed in `/Applications/Xcode.app/Contents/Developer`. To verify run
 ```
 ~ xcode-select -p
@@ -69,7 +76,7 @@ Python 3.9.6
 
 3.1. **Install Xcode CLT w/ Homebrew**: 
 Alternative, you could install Xcode CLT with [Homebrew](https://brew.sh/) which is a free and open-source package manager that simplifies the installation of software on macOS and Linux.
-As a developer you will need a package manager, and Homebrew is one of the favorites/recommended one.
+Homebrew has good ARM support now, which makes installing many development tools easier.
 
 ```
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
