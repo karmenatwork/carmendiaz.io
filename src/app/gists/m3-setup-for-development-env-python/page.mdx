@@ -1,0 +1,84 @@
+import { GistLayout } from '@/components/GistLayout'
+import whichPython from './which-python.png'
+
+export const gist = {
+  author: 'Carmen Diaz',
+  date: '2023-12-22',
+  title: 'M3 MacBook setup for development env - Python',
+  description:
+    'I\'currently taking a AI/ML course so my choice for working with python is Conda. However, I\'m used to pyenv so I wanted to try if my previous setup notes on a Intel MacBook were still valid.',
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+I\'currently taking a AI/ML course so my choice for working with python is Conda. However, I\'m used to `pyenv` so I wanted to try if my previous setup notes on a Intel MacBook were still valid.
+
+macOS used to come with Python 2.7 pre-installed between versions 10.8 and 12.3. It doesn't anymore. 
+However, If you've installed Xcode or its Command Line Tools you have `Python 3.9.x` installed. 
+Apple's developer tools come with their own Python distribution.
+
+**Command lines to verify if Python is installed**
+
+| Command                                       | Description                   |
+|-----------------------------------------------|-------------------------------|
+| `which python3`                               | To check location             |
+| `python3 --version`                           | To check Python\'s version    |
+| `python3 -c "import sys; print(sys.prefix)"`  | To check where this Python is installed |
+
+It would display something like:
+<Image src={whichPython} alt="" /> 
+
+**Double checking:** `Python3.framework` should be listed as part of the Apple Command Line Tools `ls -l  $(xcode-select --print-path)/Library/Frameworks`
+
+Removing the Python installed with XCode CLT is not a good idea. Instead, install a newer version of Python with Homebrew.
+
+```
+brew install python3
+```
+
+Yet,⚠️ the Homebrew Python documentation recommends [pyenv](https://github.com/pyenv/pyenv) to manage Python environments.
+As a RoR developer, `pyenv` used to be my first option on my previous Intel Macbook pro, as it was forked from `rbenv` and `ruby-build`, and modified it for python. 
+I use [conda](https://conda.io/projects/conda/en/latest/index.html) now. 
+
+**Here are my notes from before:**
+
+- To make pyenv work, install build dependencies through Homebrew. Open Terminal, then type in:
+
+```
+brew install openssl readline xz zlib
+....
+....
+brew install pyenv
+```
+You should see `.pyenv/` in your home directory.  After checking, add it to your `zsh`shell 
+
+```blockquote
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo '[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+```
+Now, it's ready to be used! 
+```
+pyenv install 3.10
+....
+....
+pyenv global 3.10
+````
+***Note:*** There are [three options](https://github.com/pyenv/pyenv/blob/master/COMMANDS.md#pyenv-shell) to select a Pyenv-installed Python as the version to use:
+
+| Command                                       | Description                   |
+|-----------------------------------------------|-------------------------------|
+| `pyenv shell <version>`                       | Select just for the current shell session |
+| `pyenv local <version>`                       | Automatically select whenever you are in the current directory   |
+| `pyenv global <version>`                      | Select globably for your user |
+
+
+ 
+----
+⚠️ One thing to keep ALWAYS in mind is  to install ARM64 versions of these packages when available for optimal performance on your M3 chip.
+----
