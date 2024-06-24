@@ -1,0 +1,169 @@
+import { GistLayout } from '@/components/GistLayout'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2020-07-16',
+  title: 'My Git Workflow',
+  description: "Welcome to my Git workflow! 🌟 I've followed this approach to keep my development process smooth, organized, and enjoyable. (Migrated from github's gists original)",
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+Welcome to my Git workflow! 🌟 I've followed this approach to keep my development process smooth, organized, and enjoyable. 
+
+My workflow help me collaborate seamlessly, maintain a clean main branch, facilitate easy code reviews, and deploy with confidence. 
+## The Basics
+Here's a quick overview of how we roll:
+
+1. Create a feature branch
+2. Code your heart out
+3. Commit often
+4. Push to remote
+5. Open a pull request
+6. Get feedback and make changes
+7. Merge and celebrate! 🎉
+
+This method allows me to work together effectively solo or with others while ensuring my/our codebase remains high-quality and stable.
+
+## Rebase git workflow
+
+When it is time to commit my changes to the `[develop]` branch, I prefer rebasing over merging. Rebasing means working in a linear approach where local changes are added at the end of the branch. 
+To me, it's much easier to read the log this way, since my commit is after all commits that were pushed before it.
+
+I've developed the habit of rebasing constantly (after every local commit). My rule is "rebase (when possible)". When I am working Solo and not sharing a branch with anyone, rebasing to me is the way to go. My history is clean and simple.
+With rebasing, merge issues are kept to a minimum because my local history will match staging|develop before the final merge into staging|develop.
+
+### Typical Workflow including rebase
+
+`git checkout develop`
+
+`git pull -- prune`
+
+`git checkout -b <feature-branch>`
+
+**Note:** I like to follow this pattern for naming my branches:
+
+`<initial|name>/<branch-type>/<Jira|Pivotal ID>-<feature-branch-name>`
+
+`git commit -m "<your commit message>"`
+
+**Note:** Before you push your feature-branch make sure to get the latest from develop|staging
+
+== Start Rebase git workflow :p
+
+`git pull --rebase origin develop`
+
+**Note:** Rebase frecuently while you are working on your branch to avoid merge conflicts.
+
+If you encounter a merge issue, you could open your favorite mergetool with `git mergetool`. 
+I personally don't have one, I use `git diff` & sometimes RubyMine or I use `git am --show-current-patch` to see the failed patch.
+
+
+- fix merge issues & add your fixes 
+
+`git add <filename>`
+
+- and continue rebase with:
+
+`git rebase --continue`
+
+- if it gets overwhelmed, you can always abort the rebase. 
+`git rebase --abort`
+
+It would abort the merge, discarding all changes you've made. (You will have to start over oops). If all goes well, you will have your branch ready to rock! / push. 
+
+`git push origin head -u`, which essentially is the same as 
+
+`git push --set-upstream origin <your branch name>`
+ 
+ == End  Rebase git workflow :p
+
+ ## Most useful commands - Magically / dangerous! 
+**Choose changes you want to commit with `git add -p`**
+
+`git add -p` to pick out code changes you want to commit, and leave other changes uncommitted. 
+
+**Rename branches**
+
+I often create branches that aren't associated with a specific ticket. Usually, proof of concept. 
+When somehow I convince PM that we need to do that, I rename the branch to a more meaninful one. 
+Of course, you can cherry-pick but this is the lazy awesome way! 
+
+**Cherry pick**
+
+`git cherry-pick <sha key>`
+
+I particular use this command when I'm switching branches from an older version to a newer one, but I want to carry over the changes I made previously (hard to explain). 
+Example, I have a big feature broken down into 2 or 3 tickets, if my current branch depends on another branch (already pushed but still on review", I would continue working on the previous (pushed for PR branch) and then I would "cherry-pick" the commit. 
+I honestly don't do this often. Ideally, we should be only working on smaller and deliverate tickets.
+
+## Recovering
+
+**git reflog**
+If something doesn't go well, one option is to start again by going back to the commit (pre rebase). You can do this using reflog (which has the history of everything you've done for the last 90 days thanks Anna! - btw this can be configured):
+
+```
+$ git reflog
+--Your list will show here--
+```
+See the commit before choosing it
+  
+`git checkout HEAD@{3}`
+
+`git reset --hard HEAD@{3}`
+
+
+**git reset --hard/soft**
+
+Sometimes, I mess up my local branch and I want to abort all changes and start over. Sure thing I could
+`git stash` but that would bring some confusion later on if I list all my stashs. 
+Rarely, I would do 
+
+`git reset --hard origin/develop` or
+
+`git reset <previous commit>` 
+
+`git reset --help` for more options.
+
+**Note**: While you can recover the discarded commits using reflog and reset, uncommitted changes cannot be
+recovered. Use git stash; instead of git reset --hard to be safe.
+
+
+## Cute to know commands :) 
+
+I kinda avoid `git blame` because I do believe on team work spirit. Instead, before asking any questions,  I use 
+**git log** (Filter logs)
+
+
+`git log --author=karmenatwork`
+
+`git log --after '3 days ago'`
+
+**git diff**
+
+`diff --git a/README.md b/README.md`
+
+
+**git log**
+
+`git log foo..bar`
+
+**git fsck dangling commit** 
+`git fsck`
+
+Read also 
+[git-gc](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/git-gc.html)
+
+To remove all dangling commits from your git repository
+
+`git reflog expire --expire=now --all`
+
+and / or
+
+`git gc --prune=now`
