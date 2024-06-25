@@ -1,0 +1,116 @@
+import { GistLayout } from '@/components/GistLayout'
+import Link from 'next/link'
+
+export const linkSetupBasics = 'm3-setup-for-development-env-basics'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2023-12-29',
+  title: 'MacOS setup for software development Must / Nice to have',
+  description:
+    "These are my Must / Nice to have on a MacbookPro over the years - (updated for Apple Silicon Macs)",
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+These are my Must / Nice to have on a MacbookPro over the years - (updated for Apple Silicon Macs)
+
+##  Must Haves
+For more info <Link href={linkSetupBasics}>M3 MacBook setup for development env - basics</Link>
+
+✅ Install XCode (CLI):
+
+```
+$ xcode-select --install
+```
+
+✅ Install a Package Manager - Homebrew
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+**Note:** While Rosetta 2 is not required for Homebrew itself, you might still need it for certain formulae or casks that haven't been updated with native ARM64 support. However, many popular packages now have native ARM64 versions available. 
+
+✅ **SSH Key setup**
+
+- **Github**
+
+Following [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) instruction from the GitHub Docs didn't give me any issues on my M3 MacBookPro.
+
+1. **Generate a new SSH key** 
+
+`ssh-keygen -t ed25519 -C "your_email@example.com"`
+
+2. **Add new SSH key to ssh-agent** 
+
+2.1. Start the ssh-agent in the background
+```
+$ eval "$(ssh-agent -s)"
+```
+2.2.  If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config
+```
+Host github.com
+  AddKeysToAgent yes
+  UseKeychain yes 
+  IdentityFile ~/.ssh/id_<your_key>
+```
+**Note:** If you chose not to add a passphrase to your key, you should omit the UseKeychain line.
+
+2.3. Add your SSH private key to the ssh-agent and store your passphrase in the keychain.
+```
+ssh-add --apple-use-keychain ~/.ssh/id_<your_key>
+```
+
+2.4. Add the SSH public key to your account on GitHub.
+
+
+3. **Authenticate to Git — Github** 
+Since most developers have two-factor authentication (2FA) enabled (as they should), we must install the GitHub utility gh to authenticate Git operations.
+
+```
+brew install gh
+gh auth login
+```
+and follow the on screen instructions to authenticate via the browser
+```
+ ➜  ~ gh auth login
+? What account do you want to log into? GitHub.com
+? What is your preferred protocol for Git operations on this host? SSH
+? Upload your SSH public key to your GitHub account? /Users/carmen/.ssh/id_ed25519_karmenatwork.pub
+? Title for your SSH key: GitHub CLI
+? How would you like to authenticate GitHub CLI? Login with a web browser
+....
+```
+
+### ✅ Replace MacOS built-in terminal. I've been using for years iTerm2. Download it [here](https://iterm2.com/downloads.html) or 
+
+```
+$ brew install --cask iterm2
+````  
+
+### ✅ Development Tools
+- Paid version: I've been using for years [jetbrains](https://www.jetbrains.com/) IDEs, depending of the language but mostly RubyMine and PyCharm. 
+
+- Free version: The most popular one is [Visual Studio Code](https://code.visualstudio.com/). [Download](https://code.visualstudio.com/Download) and  install it, then moved it to Application folder.
+
+
+## Nice to Haves 
+
+It's a actually a Must for me 😀
+
+### 👌🏽 Improve your terminal with "Oh My ZSH!"
+For managing your Zsh configuration [ohmyz.sh](https://ohmyz.sh/)
+
+```
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+Open `.zshrc` and customize your settings such as `ZSH_THEME` .
+
+
+### 👌🏽 Windows organizer 
+I continue using Magnet to organize my multiple windows at the same time. I installed it via the [App Store](https://apps.apple.com/br/app/magnet/id441258766?l=en&mt=12)
