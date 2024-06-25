@@ -3,7 +3,7 @@ import { GistLayout } from '@/components/GistLayout'
 export const gist = {
   author: 'Carmen',
   date: '2023-12-21',
-  title: 'M3 MacBook setup for software development',
+  title: 'M3 MacBook setup for development env - basics',
   description:'The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. Here are the must-have steps I inherited from my Intel configuration.'
 }
 
@@ -16,6 +16,8 @@ export default (props) => <GistLayout gist={gist} {...props} />
 
 The M3 chip uses ARM architecture, so I prioritize software and tools that have native ARM support for optimal performance. 
 Here are the must-have steps I inherited from my Intel configuration.
+
+
 
 1. **Install Homebrew (a free and open-source package manager):**
 It simplifies the installation of software on macOS and Linux, and has good ARM support now.
@@ -36,6 +38,12 @@ brew install \\
   wget \\ - cURL alternative
 
 ```
+
+**Updated**:
+In the early versions of the Apple Silicon Macs, we needed to install `Rosseta 2` to install Homebrew.
+Luckily, Homebrew now has native support for Apple Silicon Macs, including those with M1, M2, and M3 chips. The installation process is the same as on Intel-based Macs, and it will automatically install the ARM64 version of Homebrew designed for Apple Silicon.
+
+
 2. **iTerm2:** It's one of the ARM-native options
 
 Download it [here](https://iterm2.com/downloads.html), then unzip and move it to Application, or 
