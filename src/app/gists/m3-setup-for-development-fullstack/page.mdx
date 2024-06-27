@@ -1,0 +1,106 @@
+import { GistLayout } from '@/components/GistLayout'
+import Link from 'next/link'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2024-01-08',
+  title: 'M3 MacBook setup for development fullstack',
+  description:'As a full stack engineer with knowledge of Python and Ruby on Rails, here are some basic packages and tools I have (updated for Silicon macOS)'
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+As a full stack engineer with knowledge of Python and Ruby on Rails, here are some basic packages and tools I have (updated for Silicon macOS)
+
+1. **Xcode Command Line Tools:** 
+It's a MUST for many development tasks on macOS. 
+
+ `$ xcode-select --install`
+
+2. [Homebrew](https://brew.sh/): Package manager for macOS. It's a MUST
+
+Homebrew now has native support for Apple Silicon Macs, including those with M1, M2, and M3 chips. The installation process is the same as on Intel-based Macs, and it will automatically install the ARM64 version of Homebrew designed for Apple Silicon.
+
+3. **Git:** Version control system.
+`brew install git`
+
+4. **Terminal emulator:**
+iTerm2 or the built-in Terminal app
+
+More info about XCode CLI, Homebrew, Git and Terminal emulator 👇🏽
+
+- <Link href="/gists/macos-setup-software-development" target="_blank">MacOS setup for software development</Link>
+
+- <Link href="/gists/m3-setup-for-development-env-basics" target="_blank">MacOS setup for development basics</Link>
+
+5. **Text editor or IDE**
+
+I'm a [JetBrains](https://www.jetbrains.com/)'s fan. I started with IntelliJ IDEA during my Java time and have continued with RubyMine, PyCharm, and WebStorm since I moved to the USA.
+However, [Visual Studio Code](https://code.visualstudio.com/) is my favorite free IDE, no doubth!  
+
+6. **Languages***
+
+### Ruby / RoR / Nodejs
+
+- Use a Ruby Manager or a Multiple Runtime Version Manager
+
+I've used `asfd` lately over `rbenv` or `rvm`. ASDF can manage other languages like Node.js too, so it's been my choice lately.  
+
+[Its installation](https://asdf-vm.com/guide/getting-started.html) is pretty easty. 
+
+First install dependencies `brew install coreutils curl git`.
+
+Then you can use Homebrew or  `brew install asdf` or **git** to clone it.`git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch <version>` 
+
+Lastly, add `. "$HOME/.asdf/asdf.sh"` to `~/.zshrc` (assuming you are using ZSH)
+
+We need ASDF plugins for each language we want to use. 
+
+**For Ruby / Rails** use the following command: 
+`asdf pluggin add ruby`
+
+To install Ruby and set the default version as global, run the following commands:
+
+```
+asdf install ruby <version> 
+# or asdf install ruby latest
+
+asdf global ruby <version>
+
+# Update to the latest Rubygems version
+gem update --system
+```
+
+For **NodeJs**
+
+Per ASDF, we should install dependencies first as some Plugins have post-install hooks.
+
+`brew install gpg gawk`
+
+```
+asdf install nodejs latest
+asdf global nodejs latest
+
+# Install yarn for Rails jsbundling/cssbundling or webpacker
+npm install -g yarn
+
+````
+
+### Python
+
+`pyenv` or `conda` for managing Python environments.
+
+Check 
+<Link href="/gists/m3-setup-for-development-env-python" target="_blank">MacOS setup for Python </Link> for `pyenv`
+
+Installing `conda`is pretty straighforward. I followed Conda's tip. "If you are just starting out, we recommend installing Conda via the Miniconda installer."
+Download the latest Miniconda installer for macOS with Apple Silicon. After the installation is finished, open your terminal and type the command conda. You will see (base) in your terminal, which is the default environment.
+
+
+
+
