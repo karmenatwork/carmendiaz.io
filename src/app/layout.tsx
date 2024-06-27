@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Providers from "@/app/providers";
 import { Layout } from "@/components/Layout";
 
-import "./globals.css";
+import "./../styles/tailwind.css"
 
 export const metadata: Metadata = {
   title: "Carmen Díaz",
