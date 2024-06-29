@@ -1,0 +1,70 @@
+import { GistLayout } from '@/components/GistLayout'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2024-02-14',
+  title: 'Conda Cheat Sheet',
+  description: "Conda is a data science package and environment management application. It primarily manages Python packages but also supports R, Ruby, Lua, Scala, Java, JavaScript, C, C++, and Fortran packages",
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+Conda is a data science package and environment management application. It primarily manages Python packages but also supports R, Ruby, Lua, Scala, Java, JavaScript, C, C++, and Fortran packages
+
+**Choose based on your** [experience.](https://docs.anaconda.com/distro-or-miniconda/) I have followed [Conda's tip](https://conda.io/projects/conda/en/latest/user-guide/install/index.html): ***"If you are just starting out, we recommend installing Conda via the Miniconda installer."*** 
+I just finished an AI/ML bootcamp so I'm still a 🥖 bun in the oven 😅. 
+
+[Download the latest](https://conda.io/projects/conda/en/latest/index.html) Miniconda installer for macOS with Apple Silicon.
+After the installation is finished, open your terminal and type the command  `conda`. You will see `(base)` in your terminal, which is the default environment. 
+
+🔔 Tip
+
+It's a good idea to have jupyter installed there.  
+`(base) ➜  ~ conda install -y jupyter`
+
+## Basic commands
+
+**To create an environment, use:**
+`conda create -n ENV_NAME`
+
+**To activate this environment, use:** `conda activate ENV_NAME`
+
+**To deactivate an active environment, use:**`conda deactivate`
+
+**To remove an environment, deactivate it first and then use:** 
+`conda remove --name ENV_NAME --all`
+
+**To install packages, use:** `conda install <package>`
+
+**To list packages installed in an environment:** `conda list -n ENV_NAME`
+
+Popular packages needed :
+
+`conda install pandas numpy matplotlib scikit-learn`
+
+To install packages located in another channel:
+
+`conda install -c conda-forge jupyterlab`
+
+`conda install -c conda-forge imbalanced-learn`
+
+To update conda to the latest version:
+`conda update conda`
+
+## 🔔 Tip
+
+Everytime you open a new tab in your terminal, it will open with the `(base)` environment by default. If you don't want this to happen.
+
+In the file `.condarc` add
+
+````
+channels:
+  - defaults
+auto_activate_base: false
+
+````
