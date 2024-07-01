@@ -17,6 +17,7 @@ export default (props) => <GistLayout gist={gist} {...props} />
 Conda is a data science package and environment management application. It primarily manages Python packages but also supports R, Ruby, Lua, Scala, Java, JavaScript, C, C++, and Fortran packages
 
 **Choose based on your** [experience.](https://docs.anaconda.com/distro-or-miniconda/) I have followed [Conda's tip](https://conda.io/projects/conda/en/latest/user-guide/install/index.html): ***"If you are just starting out, we recommend installing Conda via the Miniconda installer."*** 
+
 I'm currently taking a AI/ML bootcamp so I'm still a 🥖 bun in the oven 😅. 
 
 [Download the latest](https://conda.io/projects/conda/en/latest/index.html) Miniconda installer for macOS with Apple Silicon.
@@ -40,6 +41,9 @@ It's a good idea to have jupyter installed there.
 `conda remove --name ENV_NAME --all`
 
 **To install packages, use:** `conda install <package>`
+
+We can create and enviroment and install packages in one like
+`conda create -n myenv python numpy pandas`
 
 **To list packages installed in an environment:** `conda list -n ENV_NAME`
 
