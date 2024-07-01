@@ -1,0 +1,106 @@
+import { GistLayout } from '@/components/GistLayout'
+import Link from 'next/link'
+
+export const gist = {
+  author: 'Carmen',
+  date: '2024-06-30',
+  title: ' Tensorflow on a M3 macOS',
+  description:'The M3 chip uses ARM architecture. As of early 2024, TensorFlow has **native support** for Apple Silicon (M1/M2/M3 chips). This means you can run TensorFlow efficiently on your M3 Mac without needing to use Rosetta 2 for translation'
+}
+
+export const metadata = {
+  title: gist.title,
+  description: gist.description,
+}
+
+export default (props) => <GistLayout gist={gist} {...props} />
+
+
+As of early 2024, TensorFlow has **native support** for Apple Silicon (M1/M2/M3 chips). This means you can run TensorFlow efficiently on your M3 Mac without needing to use Rosetta 2 for translation.
+
+- **Installation is simpler now.** Apple has worked with the TensorFlow team to create a package called tensorflow-macos, which is optimized for Mac systems with Apple Silicon.
+
+- **Metal support.** TensorFlow on Mac can use Apple's Metal framework for GPU acceleration, which is optimized for Apple Silicon.
+
+## Before installation
+
+- Make sure you have Xcode Command Line tools (Xcode CLT) installed by typing `xcode-select -p` in your terminal.
+
+More info  <Link href="/gists/m3-setup-before-you-start" target="_blank">Install Xcode Command Line tool</Link>
+
+- Make sure you have a **pyenv** or **conda** for environment management.
+
+I have followed [Conda's tip](https://conda.io/projects/conda/en/latest/user-guide/install/index.html): ***"If you are just starting out, we recommend installing Conda via the Miniconda installer."***
+**Choose based on your** [experience.](https://docs.anaconda.com/distro-or-miniconda/).  
+
+I just finished an AI/ML bootcamp so I'm still a 🥖 bun in the oven 😅. 
+
+[Download the latest](https://conda.io/projects/conda/en/latest/index.html) Miniconda installer for macOS with Apple Silicon.
+After the installation is finished, open your terminal and type the command  `conda`. You will see `(base)` in your terminal, which is the default environment. 
+
+🔔 Tip
+
+It's a good idea to have jupyter installed there.  
+`(base) ➜  ~ conda install -y jupyter`
+
+## Installation
+### Option 1: Install packages one by one on a new environment
+
+
+**1. Create and activate a virtual environment:** `conda create -n ENV_NAME`
+
+**2. Upgrade pip:** `python3 -m pip install --upgrade pip`
+
+**3. Install TensorFlow packages:**
+`python3 -m pip install tensorflow-macos tensorflow-metal`
+
+For example, you can create an environment with a python's version
+
+`conda create -n ENV_NAME python=<version>` then activate it
+
+such as: 
+
+```
+conda create -n tf python=3.11`
+....
+conda activate tf
+
+(tf) python3 -m pip install tensorflow-macos
+(tf) python3 -m pip install tensorflow-metal
+```
+
+### Option 2: Bundling packages on a `yml` file.
+
+Put together a yml file similar to [tensorflow-m3-macos-env.yml](https://github.com/karmenatwork/tensorflow-on-m3-macos/blob/main/tensorflow-m3-macos-env.yml)
+
+***Note:***
+You do not need to install a specific package called `tensorflow-deps` for running TensorFlow on an M3 Mac as it used to be months ago. In my case, I decided to bundle the packages in a yml file, where I added jupyter notebook and some data science / machine learning packages I use often (pandas numpy matplotlib scikit-learn). Yet, trying to install tensorflow with `python 3.12`didn't work, so I downgraded to `python 3.11`
+
+`conda env create --name tf -f tensorflow-m3-macos-env.yml` 
+
+### Create environment
+
+`conda create -n ENV_NAME`
+
+For example, you can create an environment with a python's version
+
+`conda create -n ENV_NAME python=<version>`
+
+such as:  `conda create -n tf python=3.11`, and then to activate run
+
+`conda activate tf`
+
+You will see `(tf)`in your terminal, indicating that you are currently on that environment. 
+
+
+You can test tensorflow quickly by importing it on a python environment in your terminal. 
+
+```c
+(tf) ➜  tensorflow-on-m3-macos git:(main) ✗ python3
+Python 3.11.9 | packaged by conda-forge | (main, Apr 19 2024, 18:34:54) [Clang 16.0.6 ] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import tensorflow as tf
+>>> print(tf.__version__)
+2.16.2
+>>> 
+```
