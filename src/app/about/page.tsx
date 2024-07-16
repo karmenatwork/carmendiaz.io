@@ -2,8 +2,14 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import { Container } from "@/components/Container";
 
+import { SocialLink } from "@/components/SocialLink";
 import { getAboutData } from "@/lib/about";
 import portraitImage from "@/images/me-ai.png";
+
+import {
+  LinkedInIcon,
+  MailIcon
+} from '@/components/SocialIcons'
 
 export const metadata: Metadata = {
   title: "About",
@@ -40,8 +46,25 @@ export default function About() {
               <p>{mojo}</p>
             </div>
           </div>
+
+          <div className="lg:pl-20">
+            <SocialLink
+              href="https://www.linkedin.com/in/carmen-diaz/"
+              icon={LinkedInIcon}
+              className="mt-4"
+            >
+              Follow on LinkedIn
+            </SocialLink>
+            <SocialLink
+              href="mailto:carmen@carmendiaz.io"
+              icon={MailIcon}
+              className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
+            >
+              carmen@carmendiaz.io
+            </SocialLink>
+          </div>
         </div>
       </Container>
     </>
-  );
+  )
 }
