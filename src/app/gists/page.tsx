@@ -21,7 +21,7 @@ function Gist({ gist }: { gist: GistWithSlug }) {
           {formatDate(gist.date)}
         </Card.Eyebrow>
         <Card.Description>{gist.description}</Card.Description>
-        <Card.Cta>Read gist</Card.Cta>
+        <Card.Cta>Check gist</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
