@@ -6,16 +6,42 @@
     "intro": "I am a Software Developer born and raised in Asunción, Paraguay, and based in the Bay Area, CA.",
     "intro_alt": "I am a Mom and a Software Developer based in the Bay Area, CA.",
     "shortBio": [
-        "Hola! I’m Carmen 👋, a proud Latina Software Developer based in the Bay Area, CA. Driven in agile environments, I have gained my full-stack expertise working in fast-paced start-ups accross Fintech, Health and Wellness, and HR.",
-        "I enjoy immerse myself in workshops and seminars focused on personal development in my spare time. I cherish quality time with my son pursuing activities like Lego building, hiking and playing soccer and basketball. When on my own, I indulge in reading, playing piano and/or practicing kickboxing."
+        "Hola! I’m Carmen 👋, a proud Latina Software Developer based in the Bay Area, CA. Driven in agile environments, I have gained my full-stack expertise working in fast-paced start-ups accross Fintech, Health and Wellness, and HR.  I am actively pursuing courses to deepen my knowledge of AI and ML so that I can support my kid and his generation in facing tomorrow's (today) challenges.",
+        "In my spare time, I enjoy immersing myself in workshops and seminars focused on personal development. I love traveling the world, exploring new places, taking pictures in my walks / hikings, and cooking healthy meals. I cherish quality time with my son doing fun activities like Lego building, hiking and playing soccer and basketball. When I have some me-time, I indulge in reading, playing piano and/or practicing kickboxing."
     ],
     "bio": [
       "Computers and sports battled for my attention growing up. I would often skip my English classes to hit the tennis courts. My love for soccer saw me playing for both of my universities, and I even played field hokey for a couple of years!",
       "As the years went by, my curiosity grew stronger as I watched my oldest brother become increasingly immersed in technology. Before I knew it, I found myself eagerly waiting for him to leave for work or school, so I could secretly play on his computer.",
-      "Starting my tech journey in Paraguay was quite the adventure, especially as a woman in a field where you could hardly find any ladies around. Picture this: a traditional Catholic family, my dad's a military engineer, my mom's a dentist, and my brothers are all about engineering, just like dad. Changes were NaN 😅",
+      "Starting my tech journey in Paraguay was quite the adventure, especially as a woman in a field where you could hardly find any ladies around. Picture this: a traditional Catholic family, my dad's a military engineer, my mom's a dentist, and my brothers are all about engineering, just like dad. Chances were NaN 😅",
       "Sticking to traditional gender roles was the norm in my home, so me diving into Software Engineering was kind of a big deal. But I was captivated by technology and its potential, so I secretly chased my dream with the help of my super hero Ñate (mi Mami), I studied for a business major at one university as my dad suggested, while surreptitiously studied a computer science-related career at another.",
       "Today, driven by a profound sense of responsibility to understand and navigate the increasingly AI-driven world my child is growing up in, I actively pursue courses to deepen my knowledge of AI and ML to support him and their generation in the challenges of tomorrow."
     ],
     "mojo": "I am bun in the oven! My mojo is \"Never stop LEARNING because life never stop TEACHING\".",
-    "mailto": "hola@carmendiaz.io"
+    "mailto": "hola@carmendiaz.io",
+    "workExperience": 
+    [
+    {
+      "company": "Engenium Technologies",
+      "title": "Software Engineer",
+      "logo": "logoEngenium",
+      "start": "2023",
+      "end": {
+        "label": "Present"
+      }
+    },
+    {
+      "company": "Mobile Health Consumer",
+      "title": "Solutions Engineer",
+      "logo": "logoMHC",
+      "start": "2022",
+      "end": "2023"
+    },
+    {
+      "company": "Homebase",
+      "title": "Delivery Lead",
+      "logo": "logoHomebase",
+      "start": "2018",
+      "end": "2020"
+    }
+  ]
 }
