@@ -1,14 +1,7 @@
-import Image, { type ImageProps } from 'next/image'
+import Image from 'next/image'
+import { RoleData } from '@/types'
 
-interface Role {
-  company: string
-  title: string
-  logo: ImageProps['src']
-  start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
-}
-
-export function Role({ role }: { role: Role }) {
+export function Role({ role }: { role: RoleData }) {
   let startLabel =
     typeof role.start === 'string' ? role.start : role.start.label
   let startDate =
@@ -17,10 +10,17 @@ export function Role({ role }: { role: Role }) {
   let endLabel = typeof role.end === 'string' ? role.end : role.end.label
   let endDate = typeof role.end === 'string' ? role.end : role.end.dateTime
 
+  console.log(role)
+
   return (
     <li className="flex gap-4">
       <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7 bg-black" unoptimized />
+        <Image
+          src={role.logo}
+          alt={role.company}
+          className="h-7 w-7 bg-black"
+          unoptimized
+        />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
