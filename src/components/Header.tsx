@@ -18,104 +18,10 @@ import clsx from "clsx";
 import { Fragment, useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
-import avatarImage from "@/images/avatar1.jpg";
+import avatarImage from "@/images/avatar.jpg";
 import homeIcon from "@/images/home.svg";
 
 // Icons
-
-function HomeIcon(props: React.ComponentPropsWithoutRef<"svg">) {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="-1.44 -1.44 26.88 26.88"
-      fill="currentColor"
-      {...props}
-    >
-      <path d="M10.707 1.707a1 1 0 00-1.414 0l-7 7A1 1 0 003 10v7a1 1 0 001 1h4a1 1 0 001-1v-4h2v4a1 1 0 001 1h4a1 1 0 001-1v-7a1 1 0 00-.293-.707l-7-7z" />
-    </svg>
-  );
-}
-
-// function HomeIcon(props: React.ComponentPropsWithoutRef<"svg">) {
-//   return (
-//     <svg
-//       viewBox="0 0 8 6"
-//       aria-hidden="true"
-//       transform="matrix(-1, 0, 0, 1, 0, 0)rotate(0)"
-//       {...props}
-//     >
-//       {/* <path
-//         d="M1.75 1.75 4 4.25l2.25-2.5"
-//         fill="none"
-//         strokeWidth="1.5"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       /> */}
-
-//       <g id="SVGRepo_bgCarrier" strokeWidth="0">
-//         <path
-//           transform="translate(-1.44, -1.44), scale(0.8399999999999999)"
-//           d="M16,31.574487284890242C20.08954739895304,31.64607442544839,24.119948136198598,29.888525923374377,26.790604396946875,26.790604396946875C29.303867765882018,23.87525628321231,29.74227054669274,19.836144877354048,29.4264543567385,16C29.139306082746092,12.512077545876792,27.706613196788844,9.23986724955995,25.149043933010965,6.850956066989037C22.67807327759347,4.542932775446971,19.3765422958824,3.281101673672767,16,3.458948850631714C12.784497704790043,3.6283138268695314,10.278592980095917,5.752164833142655,7.766517880229882,7.76651788022988C4.772629497570097,10.167221659576047,0.8068575495977862,12.188536944928577,0.36020817501204405,15.999999999999996C-0.10981477114888916,20.010920413780426,2.7191491372844596,23.569750661627026,5.580673439103254,26.419326560896742C8.435050834797329,29.261785396217572,11.97233668828964,31.503983419428234,16,31.574487284890242"
-//           fill="#c9a25d"
-//           strokeWidth="0"
-//         />
-//       </g>
-
-//       <g
-//         id="SVGRepo_tracerCarrier"
-//         strokeLinecap="round"
-//         strokeLinejoin="round"
-//       />
-
-//       <g id="SVGRepo_iconCarrier">
-//         {" "}
-//         <path
-//           d="M22 22L2 22"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//         />{" "}
-//         <path
-//           d="M2 11L6.06296 7.74968M22 11L13.8741 4.49931C12.7784 3.62279 11.2216 3.62279 10.1259 4.49931L9.34398 5.12486"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//         />{" "}
-//         <path
-//           d="M15.5 5.5V3.5C15.5 3.22386 15.7239 3 16 3H18.5C18.7761 3 19 3.22386 19 3.5V8.5"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//         />{" "}
-//         <path
-//           d="M4 22V9.5"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//         />{" "}
-//         <path
-//           d="M20 9.5V13.5M20 22V17.5"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//         />{" "}
-//         <path
-//           d="M15 22V17C15 15.5858 15 14.8787 14.5607 14.4393C14.1213 14 13.4142 14 12 14C10.5858 14 9.87868 14 9.43934 14.4393M9 22V17"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//           strokeLinecap="round"
-//           strokeLinejoin="round"
-//         />{" "}
-//         <path
-//           d="M14 9.5C14 10.6046 13.1046 11.5 12 11.5C10.8954 11.5 10 10.6046 10 9.5C10 8.39543 10.8954 7.5 12 7.5C13.1046 7.5 14 8.39543 14 9.5Z"
-//           stroke="#691ea6"
-//           strokeWidth="1.5"
-//         />{" "}
-//       </g>
-//     </svg>
-//   );
-// }
-
 function ChevronDownIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
@@ -322,7 +228,6 @@ function MobileNavigation(
 
 // End Mobile Navigation
 
-
 function HomeContainer({
   className,
   ...props
@@ -370,7 +275,7 @@ function Avatar({
     >
       <Image
         src={avatarImage}
-        alt=""
+        alt="Carmen's avatar"
         sizes={large ? "4rem" : "2.25rem"}
         className={clsx(
           "rounded-full bg-zinc-100 object-cover dark:bg-zinc-800",
