@@ -25,7 +25,7 @@ function SocialLink({
 function Gist({ gist }: { gist: GistWithSlug }) {
   return (
     <Card as="article">
-      <Card.Title href={`/gits/${gist.slug}`}>
+      <Card.Title href={`/gists/${gist.slug}`}>
         {gist.title}
       </Card.Title>
       <Card.Eyebrow as="time" dateTime={gist.date} decorate>
