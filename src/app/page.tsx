@@ -2,6 +2,15 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { Card } from '@/components/Card'
+import { WorkExperience } from "@/components/WorkExperience";
+import { ImageGallery } from "@/components/ImageGallery";
+import image1 from '@/images/photos/dolores-park.jpg'
+import image2 from '@/images/photos/carmen-auto.jpg'
+import image3 from '@/images/photos/smoothie.jpg'
+import image4 from '@/images/photos/carmen-sf.jpg'
+import image5 from '@/images/photos/boxing2.jpg'
+import image6 from '@/images/photos/carmen-hiking.jpg'
+import image7 from '@/images/photos/carmen-piano.jpg'
 
 import {
   // GitHubIcon,
@@ -72,12 +81,22 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Container className="mt-14 md:mt-18">
+      <ImageGallery images={[
+        { src: image1.src, width: `${image1.width}` },
+        { src: image2.src, width: `${image2.width}` },
+        { src: image3.src, width: `${image3.width}` },
+        { src: image4.src, width: `${image4.width}` },
+      ]} />
+
+      <Container className="md:mt-18 mt-14">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {gists.map((gist) => (
               <Gist key={gist.slug} gist={gist} />
             ))}
+          </div>
+          <div className="space-y-10 lg:pl-16 xl:pl-24">
+            <WorkExperience />
           </div>
         </div>
       </Container>
