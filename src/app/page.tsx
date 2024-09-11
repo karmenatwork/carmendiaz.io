@@ -2,12 +2,8 @@ import Link from "next/link";
 
 import { Container } from "@/components/Container";
 import { Card } from '@/components/Card'
-
-import {
-  // GitHubIcon,
-  LinkedInIcon,
-  // XIcon,
-} from '@/components/SocialIcons'
+import { LinkedInIcon } from '@/components/SocialIcons'
+import { WorkExperience } from '@/components/WorkExperience'
 
 import { type GistWithSlug, getAllGists } from "@/lib/gists";
 import { formatDate } from '@/lib/formatDate'
@@ -78,6 +74,9 @@ export default async function Home() {
             {gists.map((gist) => (
               <Gist key={gist.slug} gist={gist} />
             ))}
+          </div>
+          <div className="space-y-10 lg:pl-16 xl:pl-24">
+            <WorkExperience />
           </div>
         </div>
       </Container>

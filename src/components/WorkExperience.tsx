@@ -1,30 +1,20 @@
 import Image, { type ImageProps } from 'next/image'
-import Link from 'next/link'
-import clsx from 'clsx'
-
 import { BriefcaseIcon, ArrowDownIcon } from './CustomIcons'
 
 import { Button } from './Button'
 import { Role } from './Role'
-import { Card } from './Card'
 
-
-// import logoMHC from '@/images/logos/logoMHC.svg'
-import logoMHC from '@/images/logos/mobile_health_consumer.jpeg'
-import logoEngenium from '@/images/logos/engenium.png'
-import logoHomebase from '@/images/logos/homebase.jpeg'
 import logoCarmen from '@/images/logos/carmen.png'
+import logoEngenium from '@/images/logos/engenium.png'
+import logoMHC from '@/images/logos/mobile_health_consumer.jpeg'
+import logoHomebase from '@/images/logos/homebase.jpeg'
+// import logo from '@/images/carmen.png'
+// import logo from '../../public/logos/carmen.png'
 
-interface Role {
-  company: string
-  title: string
-  logo: ImageProps['src']
-  start: string | { label: string; dateTime: string }
-  end: string | { label: string; dateTime: string }
-}
+import { type RoleData } from '@/types'
 
 export function WorkExperience() {
-  let resume: Array<Role> = [
+  let resume: Array<RoleData> = [
     {
       company: 'CDE Consulting ',
       title: 'Mentor - Software Engineer',
@@ -73,7 +63,7 @@ export function WorkExperience() {
         ))}
       </ol>
       <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
+        Download Resume
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
     </div>
