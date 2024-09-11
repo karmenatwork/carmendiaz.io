@@ -2,14 +2,13 @@ import Image, { type ImageProps } from 'next/image'
 import { BriefcaseIcon, ArrowDownIcon } from './CustomIcons'
 
 import { Button } from './Button'
+import DownloadResumeButton from './DownloadResumeButton'
 import { Role } from './Role'
 
 import logoCarmen from '@/images/logos/carmen.png'
 import logoEngenium from '@/images/logos/engenium.png'
 import logoMHC from '@/images/logos/mobile_health_consumer.jpeg'
 import logoHomebase from '@/images/logos/homebase.jpeg'
-// import logo from '@/images/carmen.png'
-// import logo from '../../public/logos/carmen.png'
 
 import { type RoleData } from '@/types'
 
@@ -62,10 +61,17 @@ export function WorkExperience() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
+      <Button
+        href="resume_2024.pdf"
+        download="Carmen_Diaz_Resume.pdf"
+        target='blank'
+        variant="secondary"
+        className="group mt-6 w-full"
+      >
         Download Resume
         <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </Button>
+      
     </div>
   )
 }
