@@ -13,21 +13,21 @@ export function SimpleLayout({
 }) {
   return (
     <Container className="mt-16 sm:mt-32">
-      <section className="80vh relative flex justify-end">
+      <section className="relative flex w-full items-center justify-end overflow-hidden">
         <Image
           src={carmenLaptop}
-          alt=""
-          sizes="100vw"
-          placeholder="blur"
-          style={{ width: '100%', height: 'auto' }}
-          className="rounded-2xl"
+          alt="Carmen coding on her laptop"
+          // placeholder="blur"
+          fill
+          sizes="(min-width: 640px) 640px, 100vw"
+          style={{ objectFit: 'cover' }}
+          className="rounded-2xl opacity-60"
         />
-
-        <header className="absolute z-10 pt-8 pe-8">
+        <header className="z-10 flex flex-col items-center justify-end p-8">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-100 sm:text-5xl dark:text-zinc-100">
             {title}
           </h1>
-          <p className="mt-2 max-w-96  text-base text-zinc-100 dark:text-zinc-100">
+          <p className=" text-zinc-600 xs:text-lg mt-2 max-w-96 sm:text-zinc-600 dark:text-zinc-100">
             {intro}
           </p>
         </header>
