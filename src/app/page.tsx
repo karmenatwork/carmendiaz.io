@@ -4,10 +4,24 @@ import { Container } from "@/components/Container";
 import { Card } from '@/components/Card'
 import { LinkedInIcon } from '@/components/SocialIcons'
 import { WorkExperience } from '@/components/WorkExperience'
+import { ImageGallery } from "@/components/ImageGallery";
 
 import { type GistWithSlug, getAllGists } from "@/lib/gists";
 import { formatDate } from '@/lib/formatDate'
 import { getAboutData } from "@/lib/about";
+
+import goldenGate from '@/images/home/carmen-golden-gate.jpg'
+import hiking from '@/images/home/carmen-hiking.jpg'
+import carmenPiano from '@/images/home/carmen-piano.jpg'
+import healthyMeal from '@/images/home/healthy-meal.jpg'
+
+const imageList = [
+  { src: carmenPiano, alt: 'Carmen playing the piano' },
+  { src: healthyMeal, alt: 'Carmen eating a healthy meal' },
+  { src: goldenGate, alt: 'Carmen at the Golden Gate Bridge' },
+  { src: hiking, alt: 'Carmen hiking' },
+]
+
 
 function SocialLink({
   icon: Icon,
@@ -38,7 +52,7 @@ function Gist({ gist }: { gist: GistWithSlug }) {
 }
 
 export default async function Home() {
-  const { fullName, headline, shortBio } = getAboutData();
+  const { fullName, headline, shortBio, shortBioI } = getAboutData();
   const gists = (await getAllGists()).slice(0,4);
   return (
     <>
@@ -49,7 +63,7 @@ export default async function Home() {
           </h1>
           <div className="mt-1">{headline}</div>
           <div className="mt-6 space-y-7">
-            {shortBio.map((paragraph, i) => (
+            {shortBioI.map((paragraph, i) => (
               <p key={i}>{paragraph}</p>
             ))}
           </div>
@@ -68,7 +82,8 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Container className="mt-14 md:mt-18">
+      <ImageGallery images={imageList} />
+      <Container className="md:mt-18 mt-14">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
             {gists.map((gist) => (
