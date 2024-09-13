@@ -2,16 +2,17 @@ import fs from "fs";
 import path from "path";
 
 interface AboutData {
-  shortName: string;
-  fullName?: string;
-  headline?: string;
+  shortName: string
+  fullName?: string
+  headline?: string
   // github: string;
-  linkedIn: string;
-  intro: string;
-  shortBio: string[];
-  bio: string[];
-  mojo: string;
-  mailto: string;
+  linkedIn: string
+  intro: string
+  shortBio: string[]
+  shortBioI: string[]
+  bio: string[]
+  mojo: string
+  mailto: string
   // date: string;
 }
 
