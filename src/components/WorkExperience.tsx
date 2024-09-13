@@ -2,7 +2,6 @@ import Image, { type ImageProps } from 'next/image'
 import { BriefcaseIcon, ArrowDownIcon } from './CustomIcons'
 
 import { Button } from './Button'
-import DownloadResumeButton from './DownloadResumeButton'
 import { Role } from './Role'
 
 import logoCarmen from '@/images/logos/carmen.png'
