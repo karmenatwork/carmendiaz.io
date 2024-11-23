@@ -112,16 +112,18 @@ function NavItem({
 function DesktopNavigation({ className, ...props }: React.ComponentPropsWithoutRef<"nav">) {
   return (
     <nav
-      className={clsx(className, "hidden sm:flex place-items-start space-x-6")}
+      className={clsx(className, 'hidden place-items-start space-x-6 sm:flex')}
       {...props}
     >
       <ul className="flex text-zinc-600 dark:text-zinc-200">
+        <NavItem href="/">
+          <HomeModernIcon /> </NavItem>
         <NavItem href="/about">About</NavItem>
-        <NavItem href="/gists">Gists</NavItem>
+        <NavItem href="/gists">Gists</NavItem>  
         <NavItem href="/contact">Contact</NavItem>
       </ul>
     </nav>
-  );
+  )
 }
 
 // Mobile Navigation
@@ -401,7 +403,7 @@ export function Header() {
 
               <div className="flex flex-1 justify-end md:justify-center">
                 <MobileNavigation className="pointer-events-auto md:hidden" />
-                {isHomePage && <HomeModernIcon />}
+      
                 <DesktopNavigation className="pointer-events-auto hidden md:block" />
               </div>
               <div className="flex justify-end md:flex-1">
