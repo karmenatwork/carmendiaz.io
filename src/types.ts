@@ -7,3 +7,9 @@ export interface RoleData {
   start: string | { label: string; dateTime: string }
   end: string | { label: string; dateTime: string }
 }
+
+export type ContactFormData = {
+  email: string
+  name: string
+  message: string
+}
