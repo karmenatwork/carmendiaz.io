@@ -5,11 +5,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from "zod";
 
-
 import { MailIcon } from "./CustomIcons";
 
 import { sendContactForm } from "@/actions/contact";
-import { ContactFormSchema } from '@/lib/schemas'
+import { ContactFormSchema, MAX_MESSAGE_LENGTH } from '@/lib/schemas'
 import toast, { Toaster } from 'react-hot-toast'
 
 let renderCount = 0;
@@ -33,19 +32,6 @@ const ContactForm: React.FC = () => {
       message: '',
     },
   })
-
-  const [formData, setFormData] = useState<z.infer<typeof ContactFormSchema>>({
-    name: '',
-    email: '',
-    message: '',
-  })
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
-  }
 
   // Define a submit handler.
   async function onSubmit(values: z.infer<typeof ContactFormSchema>) {
@@ -128,8 +114,10 @@ const ContactForm: React.FC = () => {
             onChange={(e) => setMessageLength(e.target.value.length)}
           ></textarea>
           <p className="mt-0 text-sm text-red-500">{errors.message?.message}</p>
-          <p className="my-3 text-left text-xs text-gray-400">
-            {messageLength}/500 characters
+          <p
+            className={`text-right text-sm ${messageLength > MAX_MESSAGE_LENGTH * 0.9 ? 'text-red-500' : 'text-gray-400'}`}
+          >
+            {messageLength}/{MAX_MESSAGE_LENGTH} characters
           </p>
         </div>
         <button
