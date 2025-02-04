@@ -4,8 +4,9 @@
 import { Resend } from 'resend'
 import { z } from 'zod'
 import ThankYouEmail from '@/emails/thank-you'
-
 import { ContactFormSchema } from '@/lib/schemas'
+
+import {db } from '@/lib/firebase'
 
 type ContactFormValues = z.infer<typeof ContactFormSchema>
 
@@ -16,6 +17,8 @@ const fromEmail = `Carmen Díaz <${process.env.RESEND_FROM_EMAIL}>`
 export async function sendContactForm(values: ContactFormValues) {
     try{
         ContactFormSchema.parse(values)
+
+        
 
         await resend.emails.send({
             to: values.email,
