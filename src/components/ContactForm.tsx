@@ -8,12 +8,13 @@ import { z } from "zod";
 import { MailIcon } from "./CustomIcons";
 
 import { sendContactForm } from "@/actions/contact";
+
 import { ContactFormSchema, MAX_MESSAGE_LENGTH } from '@/lib/schemas'
 import toast, { Toaster } from 'react-hot-toast'
 
-let renderCount = 0;
+
 const ContactForm: React.FC = () => {
-  renderCount++
+
   const [messageLength, setMessageLength] = useState(0) // Track character count
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
