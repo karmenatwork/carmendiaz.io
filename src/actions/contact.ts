@@ -1,31 +1,61 @@
-
 'use server'
 
-import { Resend } from 'resend'
+import { revalidatePath } from 'next/cache'
+
+import { resend } from '@/lib/resend'
 import { z } from 'zod'
 import ThankYouEmail from '@/emails/thank-you'
 import { ContactFormSchema } from '@/lib/schemas'
 
-type ContactFormValues = z.infer<typeof ContactFormSchema>
+import { db } from '@/lib/firebase/client'
+import { collection, doc, setDoc, addDoc } from 'firebase/firestore'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+type ContactFormValues = z.infer<typeof ContactFormSchema>
 
 const fromEmail = `Carmen Díaz <${process.env.RESEND_FROM_EMAIL}>`
 
-export async function sendContactForm(values: ContactFormValues) {
-    try{
-        const {name, email, message} = ContactFormSchema.parse(values)
+export async function saveContact(values: ContactFormValues) {
+  console.log('Saving contact (saveContact)...', values)
 
-        await resend.emails.send({
-            to: email,
-            from: fromEmail,
-            subject: `Hello ${name}. Thanks for reaching out!`,
-            react: ThankYouEmail({ name: name }),
-        })
-        return { success: true }
-    } catch (error) {
-        return { success: false, error }
+  try {
+    const { name, email, message } = ContactFormSchema.parse(values)
+
+    const contactRef = await addDoc(collection(db, 'contacts'), {
+      name,
+      email,
+      message,
+      createdAt: new Date(),
+    })
+
+    console.log('Contact successfully saved! ', contactRef)
+    if (contactRef) {
+      sendContactForm(values)
     }
-  
+
+    revalidatePath('/contact')
+    return { success: true }
+  } catch (error) {
+    console.error('Error saving contact:', error)
+    return { success: false, error }
+  }
 }
 
+export async function sendContactForm(values: ContactFormValues) {
+  console.log('Sending contact form (sendContactForm)...', values)
+
+  try {
+    const { name, email, message } = ContactFormSchema.parse(values)
+
+    await resend.emails.send({
+      to: email,
+      from: fromEmail,
+      subject: `Hello ${name}. Thanks for reaching out!`,
+      react: ThankYouEmail({ name: name }),
+    })
+     revalidatePath('/')
+    return { success: true }
+  } catch (error) {
+    return { success: false, error }
+  }
+  return { success: true }
+}

@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from "zod";
+import { z } from 'zod'
 
-import { MailIcon } from "./CustomIcons";
+import { MailIcon } from './CustomIcons'
 
-import { sendContactForm } from "@/actions/contact";
+import { saveContact } from '@/actions/contact'
 
 import { ContactFormSchema, MAX_MESSAGE_LENGTH } from '@/lib/schemas'
 import toast, { Toaster } from 'react-hot-toast'
 
+type ContactFormInputs = z.infer<typeof ContactFormSchema>
 
 const ContactForm: React.FC = () => {
-
   const [messageLength, setMessageLength] = useState(0) // Track character count
   const [status, setStatus] = useState<
     'idle' | 'loading' | 'success' | 'error'
@@ -25,7 +25,7 @@ const ContactForm: React.FC = () => {
     handleSubmit,
     reset,
     formState: { errors, isSubmitting },
-  } = useForm({
+  } = useForm<ContactFormInputs>({
     resolver: zodResolver(ContactFormSchema),
     defaultValues: {
       name: '',
@@ -34,14 +34,14 @@ const ContactForm: React.FC = () => {
     },
   })
 
-  // Define a submit handler.
+  // // Define a submit handler.
   async function onSubmit(values: z.infer<typeof ContactFormSchema>) {
     setStatus('loading')
     const toastId = toast.loading('Sending your message...')
     try {
-      console.log('Submitting form...', values)
+      console.log('Submitting form (onSubmit)...', values)
 
-      const respond = await sendContactForm(values)
+      const respond = await saveContact(values)
       console.log('Response:', respond)
       if (respond?.success) {
         toast.success('Message sent successfully', { id: toastId })
@@ -62,6 +62,30 @@ const ContactForm: React.FC = () => {
     }
   }
 
+  // Testing with api/contact
+  // const onSubmit = async (data: ContactFormInputs) => {
+  //   const toastId = toast.loading('Sending your message...')
+  //   try {
+  //     const response = await fetch('/api/contact', {
+  //       method: 'POST',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify(data),
+  //     })
+
+  //     if (response.ok) {
+  //       toast.success('Message sent successfully', { id: toastId })
+  //       setStatus('success')
+  //       reset()
+  //       setMessageLength(0)
+  //     }
+  //   } catch (error) {
+  //     console.error('Error sending message', error)
+  //     setStatus('error')
+  //     toast.error('Failed to send message. Please try again later.', {
+  //       id: toastId,
+  //     })
+  //   }
+  // }
   return (
     <>
       <form
@@ -131,6 +155,6 @@ const ContactForm: React.FC = () => {
       </form>
     </>
   )
-};
+}
 
-export default ContactForm;
+export default ContactForm

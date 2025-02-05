@@ -14,8 +14,8 @@ import * as React from 'react'
 interface ThankYouProps {
   name: string
 }
-const baseUrl = process.env.CDE_IMAGES_URL
-  ? `https://${process.env.CDE_IMAGES_URL}`
+const baseUrl = process.env.RESEND_IMAGES_URL
+  ? `https://${process.env.RESEND_IMAGES_URL}`
   : 'http://localhost:3000/'
 
 import logoCarmen from '@/images/logos/carmen.png'
