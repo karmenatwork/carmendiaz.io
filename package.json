@@ -10,6 +10,7 @@
     "email": "email dev --dir src/emails"
   },
   "dependencies": {
+    "@firebase/firestore": "^4.7.6",
     "@headlessui/react": "^2.0.4",
     "@hookform/resolvers": "^3.10.0",
     "@mdx-js/loader": "^3.0.1",
