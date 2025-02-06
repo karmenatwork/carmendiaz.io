@@ -27,9 +27,9 @@ export async function saveContact(values: ContactFormValues) {
       createdAt: new Date(),
     })
 
-    console.log('Contact successfully saved! ', contactRef)
+    console.log('Contact successfully saved! ')
     if (contactRef) {
-      sendContactForm(values)
+      sendEmail(values)
     }
 
     revalidatePath('/contact')
@@ -40,8 +40,8 @@ export async function saveContact(values: ContactFormValues) {
   }
 }
 
-export async function sendContactForm(values: ContactFormValues) {
-  console.log('Sending contact form (sendContactForm)...', values)
+export async function sendEmail(values: ContactFormValues) {
+  console.log('Sending Thank you email ...', values)
 
   try {
     const { name, email, message } = ContactFormSchema.parse(values)
@@ -52,7 +52,6 @@ export async function sendContactForm(values: ContactFormValues) {
       subject: `Hello ${name}. Thanks for reaching out!`,
       react: ThankYouEmail({ name: name }),
     })
-     revalidatePath('/')
     return { success: true }
   } catch (error) {
     return { success: false, error }
