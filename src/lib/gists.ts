@@ -4,7 +4,8 @@ interface Gist {
   title: string;
   description: string;
   author: string;
-  date: string;
+  created: string;
+  updated: string;
 }
 
 export interface GistWithSlug extends Gist {
@@ -30,5 +31,5 @@ export async function getAllGists() {
 
   let gists = await Promise.all(gistFilename.map(importGist));
 
-  return gists.sort((a, z) => +new Date(z.date) - +new Date(a.date));
+  return gists.sort((a, z) => +new Date(z.updated) - +new Date(a.updated));
 }
