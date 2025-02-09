@@ -6,32 +6,31 @@ import { type GistWithSlug, getAllGists } from "@/lib/gists";
 import { formatDate } from "@/lib/formatDate";
 
 function Gist({ gist }: { gist: GistWithSlug }) {
+  const date = (gist.updated && gist.updated !== gist.created) ? gist.updated : gist.created
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/gists/${gist.slug}`}>
-          {gist.title}
-        </Card.Title>
+        <Card.Title href={`/gists/${gist.slug}`}>{gist.title}</Card.Title>
         <Card.Eyebrow
           as="time"
-          dateTime={gist.date}
+          dateTime={date}
           className="md:hidden"
           decorate
         >
-          {formatDate(gist.date)}
+          {formatDate(date)}
         </Card.Eyebrow>
         <Card.Description>{gist.description}</Card.Description>
         <Card.Cta>Check gist</Card.Cta>
       </Card>
       <Card.Eyebrow
         as="time"
-        dateTime={gist.date}
+        dateTime={date}
         className="mt-1 hidden md:block"
       >
-        {formatDate(gist.date)}
+        {formatDate(date)}
       </Card.Eyebrow>
     </article>
-  );
+  )
 }
 
 export const metadata: Metadata = {

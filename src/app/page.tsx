@@ -37,13 +37,15 @@ function SocialLink({
 }
 
 function Gist({ gist }: { gist: GistWithSlug }) {
+  const date =
+    gist.updated && gist.updated !== gist.created ? gist.updated : gist.created
   return (
     <Card as="article">
       <Card.Title href={`/gists/${gist.slug}`}>
         {gist.title}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={gist.date} decorate>
-        {formatDate(gist.date)}
+      <Card.Eyebrow as="time" dateTime={date} decorate>
+        {formatDate(date)}
       </Card.Eyebrow>
       <Card.Description>{gist.description}</Card.Description>
       <Card.Cta>Check gist</Card.Cta>

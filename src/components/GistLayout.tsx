@@ -52,18 +52,42 @@ export function GistLayout({
               <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
                 {gist.title}
               </h1>
-              <time
-                dateTime={gist.date}
-                className="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
-              >
-                <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
-                <span className="ml-3">{formatDate(gist.date)}</span>
-              </time>
+              <div className="order-first flex flex-row-reverse">
+                {gist.updated && gist.updated !== gist.created && (
+                    <time
+                      dateTime={gist.updated}
+                      className="order-first text-base text-zinc-400 dark:text-zinc-500"
+                    >
+                      <span className="ml-3 mr-3">
+                        Last updated: {formatDate(gist.updated)}
+                      </span>
+                    </time>
+                )}
+                <span className="h-6 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+                <time
+                  dateTime={gist.created}
+                  className="text-base text-zinc-400 dark:text-zinc-500"
+                >
+                  <span className="ml-3 mr-3">
+                    Created: {formatDate(gist.created)}
+                  </span>
+                </time>
+              </div>
             </header>
             <Prose className="prose mt-8">{children}</Prose>
+            <time
+              dateTime={gist.created}
+              className="items-right order-first flex text-base text-zinc-400 dark:text-zinc-500"
+            >
+              <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+              <span className="ml-3 mr-3">
+                Created at: {formatDate(gist.created)}
+              </span>
+              <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500" />
+            </time>
           </article>
         </div>
       </div>
     </Container>
-  );
+  )
 }

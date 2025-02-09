@@ -2,7 +2,8 @@ import { GistLayout } from '@/components/GistLayout'
 
 export const gist = {
   author: 'Carmen',
-  date: '2020-07-16',
+  created: '2020-07-16',
+  updated: '2020-07-16',
   title: 'My Git Workflow',
   description: "Welcome to my Git workflow! 🌟 I've followed this approach to keep my development process smooth, organized, and enjoyable. (Migrated from github's gists original)",
 }
@@ -167,3 +168,15 @@ To remove all dangling commits from your git repository
 and / or
 
 `git gc --prune=now`
+
+
+When I accidentaly commit a file that I didn't 
+
+```
+git reset HEAD^ -- path/to/file
+git commit --amend --no-edit
+```
+
+The`git reset` will take the file as it was in the previous commit, and stage it in the index. The file in the working directory is untouched.
+
+The `git commit` will then commit and squash the index into the current commit.
