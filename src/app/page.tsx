@@ -4,7 +4,8 @@ import { Container } from "@/components/Container";
 import { Card } from '@/components/Card'
 import { LinkedInIcon } from '@/components/SocialIcons'
 import { WorkExperience } from '@/components/WorkExperience'
-import { ImageGallery } from "@/components/ImageGallery";
+// import { ImageGallery } from "@/components/ImageGallery"; # Static image Gallery.
+import Carousel from '@/components/Carousel'; // Adjust path if needed
 
 import { type GistWithSlug, getAllGists } from "@/lib/gists";
 import { formatDate } from '@/lib/formatDate'
@@ -14,12 +15,14 @@ import goldenGate from '@/images/home/carmen-golden-gate.jpg'
 import hiking from '@/images/home/carmen-hiking.jpg'
 import carmenPiano from '@/images/home/carmen-piano.jpg'
 import healthyMeal from '@/images/home/healthy-meal.jpg'
+import carmenAsuncion from '@/images/home/carmen-asuncion.jpg'
 
 const imageList = [
   { src: carmenPiano, alt: 'Carmen playing the piano' },
   { src: healthyMeal, alt: 'Carmen eating a healthy meal' },
   { src: goldenGate, alt: 'Carmen at the Golden Gate Bridge' },
   { src: hiking, alt: 'Carmen hiking' },
+  { src: carmenAsuncion, alt: 'Carmen in Asuncion' },
 ]
 
 
@@ -84,7 +87,23 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <ImageGallery images={imageList} />
+      {/* <ImageGallery images={imageList} /> */}
+
+      <div className="container mx-auto mt-16 sm:mt-20">
+        {/* <div className="mx-auto max-w-5xl"> */}
+        <Carousel
+          images={imageList}
+          imagesPerView={3}
+          enableRotation={true} // Rotation disabled
+          autoPlay={true}
+          showControls={true}
+          showIndicators={true}
+          // imageContainerClassName="aspect-video w-full" // For a 16:9 video aspect ratio
+          // imageContainerClassName = 'aspect-[9/10]'
+          gapBetweenImages="gap-10"
+        />
+        {/* </div> */}
+      </div>
       <Container className="md:mt-18 mt-14">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
