@@ -120,7 +120,7 @@ function DesktopNavigation({ className, ...props }: React.ComponentPropsWithoutR
           <HomeModernIcon /> </NavItem>
         <NavItem href="/about">About</NavItem>
         <NavItem href="/gists">Gists</NavItem>  
-        <NavItem href="/contact">Contact</NavItem>
+        {/* <NavItem href="/contact">Contact</NavItem> */}
       </ul>
     </nav>
   )
@@ -190,7 +190,7 @@ function MobileNavigation(
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/about">About</MobileNavItem>
                 <NavItem href="/gists">Gists</NavItem>
-                <MobileNavItem href="/contact">Contact</MobileNavItem>
+                {/* <MobileNavItem href="/contact">Contact</MobileNavItem> */}
               </ul>
             </nav>
           </PopoverPanel>
